@@ -1,7 +1,7 @@
 {
-  "name": "lisas-bikes",
+  "name": "bikeshopper",
   "version": "0.0.1",
-  "description": "A happy little skeleton.",
+  "description": "ecommerce bicycle store built with tachyons.",
   "main": "index.js",
   "engines": {
     "node": ">= 7.0.0"
