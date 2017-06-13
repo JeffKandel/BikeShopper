@@ -31,7 +31,7 @@ class Navbar extends React.Component {
             <NavbarLink to="/cart" title="Cart"/>
             <NavbarLink to="/users" title="Admin Only: All Users"/>
             <NavbarLink to="/authenticate" title="Sign Up"/>
-            {true ? <WhoAmI/> : <Login/>}
+            {this.props.user ? <WhoAmI/> : <Login/>}
         </nav>
         </div>
       </header>
