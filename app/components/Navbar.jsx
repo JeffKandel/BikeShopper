@@ -4,6 +4,7 @@ import { Link, browserHistory } from 'react-router'
 import Login from './Login'
 import WhoAmI from './WhoAmI'
 import NavbarLink from './NavbarLink'
+import TachyonsLink from './TachyonsLink'
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -22,7 +23,7 @@ class Navbar extends React.Component {
           </Link>
           <div className="dib">
             <small className="nowrap f6 mt2 mt3-ns pr2 black-70 fw2">
-               styled with tachyons.io
+               styled with <TachyonsLink />
             </small>
           </div>
         </div>
