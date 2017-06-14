@@ -3,11 +3,11 @@
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
-const {resolve} = require('path')
+const { resolve } = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
-// PrettyError docs: https://www.npmjs.com/package/pretty-error
+  // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.
 // That means that we can require paths relative to the app root by
@@ -40,41 +40,42 @@ module.exports = app
     keys: [process.env.SESSION_SECRET || 'an insecure secret key'],
   }))
 
-  // Body parsing middleware
-  .use(bodyParser.urlencoded({ extended: true }))
+// Body parsing middleware
+.use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
 
-  // Authentication middleware
-  .use(passport.initialize())
+// Authentication middleware
+.use(passport.initialize())
   .use(passport.session())
 
-  // Serve static files from ../public
-  .use(express.static(resolve(__dirname, '..', 'public')))
+// Serve static files from ../public
+.use(express.static(resolve(__dirname, '..', 'public')))
+.use('/font-awesome', express.static(resolve(__dirname, '..', 'node_modules', 'font-awesome')))
 
-  // Serve our api - ./api also requires in ../db, which syncs with our database
-  .use('/api', require('./api'))
+// Serve our api - ./api also requires in ../db, which syncs with our database
+.use('/api', require('./api'))
 
-  // any requests with an extension (.js, .css, etc.) turn into 404
-  .use((req, res, next) => {
-    if (path.extname(req.path).length) {
-      const err = new Error('Not found')
-      err.status = 404
-      next(err)
-    } else {
-      next()
-    }
-  })
+// any requests with an extension (.js, .css, etc.) turn into 404
+.use((req, res, next) => {
+  if (path.extname(req.path).length) {
+    const err = new Error('Not found')
+    err.status = 404
+    next(err)
+  } else {
+    next()
+  }
+})
 
-  // Send index.html for anything else.
-  .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
+// Send index.html for anything else.
+.get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
 
-  // Error middleware interceptor, delegates to same handler Express uses.
-  // https://github.com/expressjs/express/blob/master/lib/application.js#L162
-  // https://github.com/pillarjs/finalhandler/blob/master/index.js#L172
-  .use((err, req, res, next) => {
-    console.error(prettyError.render(err))
-    finalHandler(req, res)(err)
-  })
+// Error middleware interceptor, delegates to same handler Express uses.
+// https://github.com/expressjs/express/blob/master/lib/application.js#L162
+// https://github.com/pillarjs/finalhandler/blob/master/index.js#L172
+.use((err, req, res, next) => {
+  console.error(prettyError.render(err))
+  finalHandler(req, res)(err)
+})
 
 if (module === require.main) {
   // Start listening only if we're the main module.
