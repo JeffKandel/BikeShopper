@@ -6,7 +6,7 @@ const Root = ({ children }) => (
   <div id="main">
     <Navbar />
     { children }
-    <Footer />
+    {/* <Footer /> */}
   </div>
 
 )

@@ -29,9 +29,7 @@ class Navbar extends React.Component {
         <nav className="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
             <NavbarLink to="/products" title="Bicycles"/>
             <NavbarLink to="/cart" title="Cart"/>
-            <NavbarLink to="/users" title="Admin Only: All Users"/>
-            <NavbarLink to="/authenticate" title="Sign Up"/>
-            {this.props.user ? <WhoAmI/> : <Login/>}
+            {this.props.user ? <WhoAmI/> : <NavbarLink to="/authenticate" title="Login / Sign Up"/>}
         </nav>
         </div>
       </header>
