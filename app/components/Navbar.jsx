@@ -15,7 +15,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <header className="w-100 pa3 ph5-ns bg-white">
+      <header className="w-100 fixed pa3 ph5-ns top-0 bg-white">
         <div className="db dt-ns mw9 center w-100">
         <div className="db dtc-ns v-mid tl w-50">
           <Link to="/" className="dib f5 f4-ns fw6 mt0 mb1 link black-70">

@@ -19,7 +19,7 @@ import Home from './components/Home'
 // Product Imports
 import AllProducts, { setProducts } from './components/AllProducts'
 import SingleProduct from './components/SingleProduct'
-import { fetchProducts } from './reducers/product'
+import { fetchProducts, fetchSingleProduct } from './reducers/product'
 
 // User Imports
 import AllUsers from './components/AllUsers'
@@ -28,8 +28,6 @@ import SingleUser from './components/SingleUser'
 // Cart Imports
 import Cart from './components/Cart'
 import { setCurrentOrder, fetchSessionOrder, mergeCurrentOrder } from './reducers/order'
-import { fetchSingleProduct } from './reducers/product'
-
 
 // Authentication Imports
 import Authenticate from './components/Authenticate'
@@ -37,15 +35,6 @@ import Login from './components/Login'
 import NotFound from './components/NotFound'
 import WhoAmI from './components/WhoAmI'
 import { whoami } from './reducers/auth'
-
-const EmptyApp = connect(
-  ({}) => ({})
-)(
-  ({}) =>
-    <div>
-      I am the EmptyApp
-    </div>
-)
 
 const fetchInitialData = (nextRouterState) => {
   // Dispatching whoami first ensures user is authenticated.
@@ -63,29 +52,10 @@ const fetchInitialData = (nextRouterState) => {
     })
 }
 
-
-// const onAppEnter = () => {
-  // Promise.all([
-  //   axios.get('/api/products'),
-  //   axios.get('/api/reviews'),
-  // ])
-  // .then(responses => responses.map(r => r.data))
-  // .then(([products, reviews]) => {
-  //   store.dispatch(setProducts(products))
-  //   store.dispatch(setReviews(reviews))
-  // })
-  // .catch(console.error)
-// }
-
 const onProductEnter = (nextRouterState) => {
   const productId = nextRouterState.params.id
   store.dispatch(fetchSingleProduct(productId))
 }
-
-const onSubmitHandle = (selectedProductId) => {
-  store.dispatch(updateCurrentOrder(selectedProductId))
-}
-
 
 const fetchAllProducts = () => {
   store.dispatch(fetchProducts())
@@ -96,18 +66,9 @@ render(
     <Router history={ browserHistory }>
       <Route path="/" component={ Root } onEnter={ fetchInitialData }>
         <Route path="/products" component={ AllProducts } onEnter={fetchAllProducts} />
-        {/*products/add is an admin only view*/}
         <Route path="/products" component={ AllProducts } />
-        <Route path="/products/add" component={ EmptyApp } />
         <Route path="/products/:id" component={ SingleProduct } onEnter = { onProductEnter }/>
-        <Route path="/users" component={ AllUsers } />
-        <Route path="/users/:id" component={ EmptyApp } />
-        <Route path="/users" component={ EmptyApp } />
-        <Route path="/users/:id" component={ SingleUser } />
-        <Route path="/account" component={ EmptyApp } />
         <Route path="/cart" component={ Cart } />
-        <Route path="/orders" component={ EmptyApp } />
-        <Route path="/orders/:id" component={ EmptyApp } />
         <Route path="/authenticate" component={ Authenticate } />
         <IndexRoute component={ Home } />
       </Route>
