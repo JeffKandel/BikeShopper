@@ -21,10 +21,6 @@ import AllProducts, { setProducts } from './components/AllProducts'
 import SingleProduct from './components/SingleProduct'
 import { fetchProducts, fetchSingleProduct } from './reducers/product'
 
-// User Imports
-import AllUsers from './components/AllUsers'
-import SingleUser from './components/SingleUser'
-
 // Cart Imports
 import Cart from './components/Cart'
 import { setCurrentOrder, fetchSessionOrder, mergeCurrentOrder } from './reducers/order'
