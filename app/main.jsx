@@ -13,23 +13,20 @@ import store from './store'
 // Root Imports
 import Root from './components/Root'
 
-// Home Imports
-import Home from './components/Home'
-
 // Product Imports
-import AllProducts, { setProducts } from './components/AllProducts'
-import SingleProduct from './components/SingleProduct'
+import AllProducts, { setProducts } from './components/Products/AllProducts'
+import SingleProduct from './components/Products/SingleProduct'
 import { fetchProducts, fetchSingleProduct } from './reducers/product'
 
 // Cart Imports
-import Cart from './components/Cart'
+import Cart from './components/Cart/Cart'
 import { setCurrentOrder, fetchSessionOrder, mergeCurrentOrder } from './reducers/order'
 
 // Authentication Imports
-import Authenticate from './components/Authenticate'
-import Login from './components/Login'
+import Authenticate from './components/Authentication/Authenticate'
+import Login from './components/Authentication/Login'
 import NotFound from './components/NotFound'
-import WhoAmI from './components/WhoAmI'
+import WhoAmI from './components/Authentication/WhoAmI'
 import { whoami } from './reducers/auth'
 
 const fetchInitialData = (nextRouterState) => {
@@ -66,7 +63,7 @@ render(
         <Route path="/products/:id" component={ SingleProduct } onEnter = { onProductEnter }/>
         <Route path="/cart" component={ Cart } />
         <Route path="/authenticate" component={ Authenticate } />
-        <IndexRoute component={ Home } />
+        <IndexRoute component={ AllProducts } />
       </Route>
       <Route path='*' component={ NotFound } />
     </Router>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, browserHistory } from 'react-router'
-import Login from './Login'
-import WhoAmI from './WhoAmI'
+import Login from '../Authentication/Login'
+import WhoAmI from '../Authentication/WhoAmI'
 import NavbarLink from './NavbarLink'
 import TachyonsLink from './TachyonsLink'
 
@@ -17,16 +17,16 @@ class Navbar extends React.Component {
     return (
       <header className="w-100 fixed pa3 ph5-ns top-0 bg-white">
         <div className="db dt-ns mw9 center w-100">
-        <div className="db dtc-ns v-mid tl w-50">
-          <Link to="/" className="dib f5 f4-ns fw6 mt0 mb1 link black-70">
-            Bike Shopper&nbsp;
-          </Link>
-          <div className="dib">
-            <small className="nowrap f6 mt2 mt3-ns pr2 black-70 fw2">
-               styled with <TachyonsLink />
-            </small>
+          <div className="db dtc-ns v-mid tl w-50">
+            <Link to="/" className="dib f5 f4-ns fw6 mt0 mb1 link black-70">
+              Bike Shopper&nbsp;
+            </Link>
+            <div className="dib">
+              <small className="nowrap f6 mt2 mt3-ns pr2 black-70 fw2">
+                 styled with <TachyonsLink />
+              </small>
+            </div>
           </div>
-        </div>
         <nav className="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
             <NavbarLink to="/products" title="Bicycles" logo="bicycle"/>
             <NavbarLink to="/cart" title="Cart" logo="shopping-cart"/>

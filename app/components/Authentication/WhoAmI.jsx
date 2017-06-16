@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarLink from './NavbarLink'
+import NavbarLink from '../Navigation/NavbarLink'
 export const WhoAmI = ({ user, logout }) => (
     <NavbarLink to="/" title="Logout" onClick={logout}/>
 )

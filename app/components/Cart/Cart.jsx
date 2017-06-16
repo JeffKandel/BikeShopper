@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, browserHistory } from 'react-router'
-import Login from './Login'
-import WhoAmI from './WhoAmI'
-import Item from './Item'
-import { deleteItemFromDatabase } from '../reducers/order'
+import Login from '../Authentication/Login'
+import WhoAmI from '../Authentication/WhoAmI'
+import Item from '../Products/ProductItem'
+import { deleteItemFromDatabase } from '../../reducers/order'
 
 /* -----------------    COMPONENT     ------------------ */
 

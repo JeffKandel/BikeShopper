@@ -1,10 +1,12 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Navbar from './Navigation/Navbar'
 
 const Root = ({ children }) => (
-  <div id="main">
+  <div>
     <Navbar />
-    { children }
+    <div className="bg-blue mt5 pt3">
+      { children }
+    </div>
   </div>
 
 )
