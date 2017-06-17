@@ -1,25 +1,18 @@
 import React from 'react'
 
-export default (props) => (
-  <tr>
-    <td>
-      <img src={props.item.product.images[0]} style={{height:'35px'}}/>
-    </td>
-    <td>
-      <div className="text-center">{props.item.product.name}</div>
-    </td>
-    <td>
-      <div className="text-center">{props.item.quantity}</div>
-    </td>
-    <td>
-      <div className="text-center" >${props.item.price/100}</div>
-    </td>
-    <td>
-      <div className='text-center'>
-        <button className="btn btn-warning btn-xs" onClick={() => props.handleRemove(props.item.id)}>
-          <i className='glyphicon glyphicon-remove' style={{color: 'red'}}></i>
-        </button>
+export default ({ name, price, image, description, alt }) => (
+  <article className="fl br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
+    <img src={image} className="db w-100 br2 br--top" alt={alt} />
+    <div className="pa2 ph3-ns pb3-ns">
+      <div className="dt w-100 mt1">
+        <div className="dtc">
+          <h1 className="f5 f4-ns mv0">{name}</h1>
+        </div>
+        <div className="dtc tr">
+          <h2 className="f5 mv0">{price}</h2>
+        </div>
       </div>
-    </td>
-  </tr>
+      <p className="f6 lh-copy measure mt2 mid-gray">{description}</p>
+    </div>
+  </article>
 )
