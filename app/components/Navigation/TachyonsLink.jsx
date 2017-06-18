@@ -1,4 +1,5 @@
 import React from 'react'
+
 export default () => (
   <a
     className="black-70 no-underline"

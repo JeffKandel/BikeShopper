@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from './Navigation/Navbar'
+import Header from './Navigation/Header'
 
 const Root = ({ children }) => (
-  <div>
-    <Navbar />
-    <div className="bg-blue mt5 pt3">
+  <div className='flex cf'>
+    <Header className=""/>
+    <main className="bg-blue mt5 pt4 pt3-m pt1-l">
       { children }
-    </div>
+    </main>
   </div>
 
 )

@@ -13,6 +13,9 @@ import store from './store'
 // Root Imports
 import Root from './components/Root'
 
+// Home Imports
+import Home from './components/Home/Home'
+
 // Product Imports
 import AllProducts, { setProducts } from './components/Products/AllProducts'
 import SingleProduct from './components/Products/SingleProduct'
@@ -63,7 +66,7 @@ render(
         <Route path="/products/:id" component={ SingleProduct } onEnter = { onProductEnter }/>
         <Route path="/cart" component={ Cart } />
         <Route path="/authenticate" component={ Authenticate } />
-        <IndexRoute component={ AllProducts } />
+        <IndexRoute component={ Home } />
       </Route>
       <Route path='*' component={ NotFound } />
     </Router>
