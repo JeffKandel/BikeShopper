@@ -68,7 +68,7 @@ render(
         <Route path="/authenticate" component={ Authenticate } />
         <IndexRoute component={ Home } />
       </Route>
-      <Route path='*' component={ NotFound } />
+      <Route path='*' component={ Home } />
     </Router>
   </Provider>,
   document.getElementById('main')

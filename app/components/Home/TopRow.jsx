@@ -3,17 +3,19 @@ import ImageLink from './ImageLink'
 import CategoryLink from './CategoryLink'
 
 
-export default () => (
-    <div className="fl w-50 w-25-ns">
-      <ImageLink image="/images/Road/BeachFront.jpg"/>
-    </div>
-    <div className="fl w-50 w-25-ns">
-      <ImageLink image="/images/Road/Cave.jpg"/>
-    </div>
-    <div className="fl w-50 w-25-ns">
-      <CategoryLink />
-    </div>
-    <div className="fl w-50 w-25-ns">
-      <ImageLink image="/images/Road/Beach.jpg"/>
+export default ({category}) => (
+    <div>
+      <div className="fl w-50 w-25-ns">
+        <ImageLink image={`/images/${category}/2.jpg`}/>
+      </div>
+      <div className="fl w-50 w-25-ns">
+        <ImageLink image={`/images/${category}/3.jpg`}/>
+      </div>
+      <div className="fl w-50 w-25-ns">
+        <CategoryLink category={category} />
+      </div>
+      <div className="fl w-50 w-25-ns">
+        <ImageLink image={`/images/${category}/1.jpg`}/>
+      </div>
     </div>
 )
