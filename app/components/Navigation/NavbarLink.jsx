@@ -6,7 +6,6 @@ export default (props) => (
   <Link
     className="f6 fw6 hover-blue hide-child link black-70 mr2 mr3-m mr4-l dib"
     to={props.to}
-    onClick={props.onClick}
     title={props.title}
     id={props.title}
   >

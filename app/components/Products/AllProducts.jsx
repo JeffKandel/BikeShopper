@@ -11,11 +11,12 @@ export class AllProducts extends React.Component {
   }
   render() {
     return (
-      <div className="flex">
+      <div className="">
           {
             this.props.products && this.props.products.map(product => (
               <ProductItem
                 key={product.id}
+                productId={product.id}
                 name={product.name}
                 price={product.price}
                 image={product.images[0]}
