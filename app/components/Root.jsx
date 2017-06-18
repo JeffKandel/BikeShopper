@@ -4,7 +4,7 @@ import Header from './Navigation/Header'
 const Root = ({ children }) => (
   <div className='flex flex-column'>
     <Header />
-    <main className="w-100 bg-blue">
+    <main className="w-100">
       { children }
     </main>
   </div>
