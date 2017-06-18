@@ -12,14 +12,15 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props)
     this.categories = this.fischerYatesCategories()
+    this.fischerYatesImageIds = this.fischerYatesImageIds.bind(this)
   }
 
   fischerYatesCategories() {
     // shuffle the categories array in place in O(n) time
     let categories = ['Road', 'Mountain', 'Town']
-    let i = 0
-      , j = 0
-      , temp = null
+    let i = 0,
+      j = 0,
+      temp = null
 
     for (i = categories.length - 1; i > 0; i -= 1) {
       j = Math.floor(Math.random() * (i + 1))
@@ -31,12 +32,38 @@ export default class Home extends React.Component {
     return categories
   }
 
+  fischerYatesImageIds() {
+    // shuffle the categories array in place in O(n) time
+    let imageIds = [1, 2, 3, 4, 5, 6, 7]
+    let i = 0,
+      j = 0,
+      temp = null
+
+    for (i = imageIds.length - 1; i > 0; i -= 1) {
+      j = Math.floor(Math.random() * (i + 1))
+      temp = imageIds[i]
+      imageIds[i] = imageIds[j]
+      imageIds[j] = temp
+    }
+
+    return imageIds
+  }
+
   render() {
     return (
       <article className="cf">
-      <TopRow category={this.categories[0]} />
-      <MiddleRow category={this.categories[1]} />
-      <BottomRow category={this.categories[2]}/>
+      <TopRow
+        category={this.categories[0]}
+        imageIds={this.fischerYatesImageIds()}
+      />
+      <MiddleRow
+        category={this.categories[1]}
+        imageIds={this.fischerYatesImageIds()}
+      />
+      <BottomRow
+        category={this.categories[2]}
+        imageIds={this.fischerYatesImageIds()}
+      />
     </article>
     )
   }
