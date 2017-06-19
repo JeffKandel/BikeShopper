@@ -14,7 +14,7 @@ class CategoryLink extends React.Component {
 
   render() {
     return (
-      <Link to='/products' className="flex aspect-ratio aspect-ratio--1x1 dim h-100" onClick={()=>this.props.setCategory(this.category)}>
+      <Link to='/products' className="flex aspect-ratio aspect-ratio--1x1 dim h-100"onClick={() => this.props.setCategory(this.category)}>
         <span
           role="category"
           aria-label={this.category}

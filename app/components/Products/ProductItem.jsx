@@ -7,7 +7,7 @@ export default ({ productId, name, price, image, description, alt }) => (
   <Link to={`/products/${productId}`}>
     <article className="fl w-100 w-50-m  w-third-ns pa2-ns">
       <div className="aspect-ratio aspect-ratio--8x5">
-        <img style={{backgroundImage: `url(${image})`, WebkitFilter: 'grayscale(100%)'}}
+        <img style={{backgroundImage: `url(${image})`}}
         className="db bg-center cover aspect-ratio--object" />
       </div>
       <div href="#0" className="ph2 ph0-ns pb3 link db">

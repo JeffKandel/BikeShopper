@@ -1,7 +1,10 @@
 import React from 'react'
-import { login } from 'APP/app/reducers/auth'
-import { connect } from 'react-redux'
+
+import FontAwesome from 'react-fontawesome'
+import { formatPrice } from '../../utils/priceUtils'
+
 import store from 'App/app/store'
+import { connect } from 'react-redux'
 
 // *------------------- COMPONENT -----------------*//
 
@@ -20,85 +23,52 @@ class SingleProduct extends React.Component {
     this.setQuantity = this.setQuantity.bind(this)
   }
 
-  setColor(val){
+  setColor(val) {
     this.setState({ color: val })
   }
 
-  setSize(val){
+  setSize(val) {
     this.setState({ size: val })
   }
 
-  setQuantity(val){
-    this.setState({ quantity: val})
+  setQuantity(val) {
+    this.setState({ quantity: val })
   }
 
   render() {
-    console.log("this.props: ", this.props)
     const product = this.props.singleProduct
+    console.log("product", product);
     const reviews = this.props.reviews
-    console.log("product.color: ", product.color)
 
     return (
-      <div>
-        <div className = "col-md-6">
-          <div className="carousel carousel-slider">
-            <a className="carousel-item" href="#one!">
-              {
-                product.images && product.images.map(image => (
-                  <img src={ image }  />
-                ))
-              }
+      <article className="flex cf ph3 ph5-ns pv5">
+        <header className=" fn fl-ns w-third-ns pr4-ns">
+          <h1 className="f2 lh-title fw9 mb3 mt0 pt3 bt bw2">
+            {product.name}
+          </h1>
+          <h2 className="f5 mid-gray lh-title">
+            {product.description}
+          </h2>
+          <div className="flex items-center justify-between col-md-6">
+            <price className="f6 ttu tracked overflow-scroll gray">
+              {formatPrice(product.price)}
+            </price>
+            <a className="fr no-underline near-white bg-animate bg-mid-gray hover-bg-black inline-flex items-center ma2 tc br2 pa2" href="https://facebook.com" title="Facebook">
+              <FontAwesome name='shopping-cart'/>
+              <span className="f6 ml2 pr2">
+                Add to Cart
+              </span>
             </a>
           </div>
+        </header>
+        <div className="fl w-two-thirds-ns pa2">
+            { product.images &&
+              <img
+                src={product.images[0]}
+                alt={product.name}
+              />}
         </div>
-
-        <div className="col-md-6">
-          <form>
-            <div className="container">
-              <h2 className="panel-title large-font">{ product.name }</h2>
-
-              <p>Price: { product.price }</p>
-              <div className = "tb">{ product.description }</div>
-              <a className='dropdown-button btn' href='#' data-activates='dropdown1'>Color</a>
-              <ul id='dropdown1' className='dropdown-content' >
-                {
-                  product.color && product.color.map(color => (
-                    <li><a onChange = {(e) => this.setColor(e.target.value) } >{ color }</a></li>
-                  ))
-                }
-              </ul>
-
-              <a className='dropdown-button btn' href='#' data-activates='dropdown1'>Size</a>
-              <ul id='dropdown1' className='dropdown-content'>
-                {
-                  product.size && product.size.map(size => (
-                    <li><a onChange = {(e) => this.setSize(e.target.value) } >{ size }</a></li>
-                  ))
-                }
-              </ul>
-
-              <a className = "waves-effect waves-light btn-large"
-                 type="submit"
-                 disabled={ this.state.color === '' || this.state.size === '' || this.state.quantity === 0 } >
-                ADD TO CART </a>
-            </div>
-          </form>
-        </div>
-
-        <div className="col-md-6">
-          <ul className= "list-group">
-            {
-              reviews && reviews.map(review => (
-                <tr key = { review.id }>
-                  <td> { review.title }</td>
-                  <td> { review.num_stars }</td>
-                  <td> { review.content }</td>
-                </tr>
-              ))
-            }
-          </ul>
-        </div>
-      </div>
+      </article>
     )
   }
 }
@@ -107,15 +77,20 @@ class SingleProduct extends React.Component {
 
 
 export default connect(
-  state => ({singleProduct: state.product.selectedProduct}),
-
-  /**
-   *   function onSubmitHandle is passed from main.jsx
-   *  which is dispatching 'createOrder' reducer .
-   *
-   *   When user hits 'add to cart' button, onSubmitHandle will
-   *  be triggered.
-   *
-   */
-  // dispatch => ({ onSubmitHandle: this.props.onSubmitHandle })
+  state => ({ singleProduct: state.product.selectedProduct }), {}
 )(SingleProduct)
+
+// <div>
+//   <div className = "col-md-6">
+//     <div className="carousel carousel-slider">
+//       <a className="carousel-item" href="#one!">
+//         {
+//           product.images && product.images.map(image => (
+//             <img src={ image }  />
+//           ))
+//         }
+//       </a>
+//     </div>
+//   </div>
+
+
