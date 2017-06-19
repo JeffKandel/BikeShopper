@@ -14,13 +14,23 @@ class ProductCategory extends React.Component {
     return (
       <div
         className="mr3"
-        onClick={()=>this.props.setCategory(this.category)}
+        onClick={
+          ()=>{
+            this.props.selectedCategory === this.category
+            ? this.props.setCategory('')
+            : this.props.setCategory(this.category)
+          }
+        }
       >
         <img
           src={`/images/${this.category}/7.jpg`}
           className="br-100 pa1 ba b--black-10 h3 w3"
           alt={`${this.category} avatar`}
-          style={{WebkitFilter: 'grayscale(100%)'}}
+          style={
+            this.props.selectedCategory === this.category
+            ? {}
+            : {WebkitFilter: 'grayscale(100%)'}
+          }
           />
         <h2 className="f6 gray fw2 ttu tracked">{this.category}</h2>
       </div>
@@ -30,6 +40,6 @@ class ProductCategory extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapProps = (state) => ({})
+const mapProps = ({product}) => ({selectedCategory:product.selectedCategory})
 
 export default connect(mapProps, { setCategory })(ProductCategory)

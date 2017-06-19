@@ -22,7 +22,14 @@ export class AllProducts extends React.Component {
             </div>
           </header>
           {
-            this.props.products && this.props.products.map(product => (
+            this.props.products
+            &&
+            this.props.products
+            .filter(product => (
+              this.props.selectedCategory === '' ||
+              product.category === this.props.selectedCategory
+            ))
+            .map(product => (
               <ProductItem
                 key={product.id}
                 productId={product.id}
@@ -40,6 +47,5 @@ export class AllProducts extends React.Component {
 }
 
 export default connect(
-  state => ({ products: state.product.products }),
-  {}
+  ({ product }) => ({ selectedCategory: product.selectedCategory, products: product.products }), {}
 )(AllProducts)
