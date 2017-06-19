@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { fischerYatesShuffle } from '../../utils/arrayUtils'
+
 import ImageLink from './ImageLink'
 import CategoryLink from './CategoryLink'
 
@@ -11,42 +13,8 @@ import BottomRow from './BottomRow'
 export default class Home extends React.Component {
   constructor(props) {
     super(props)
-    this.categories = this.fischerYatesCategories()
-    this.fischerYatesImageIds = this.fischerYatesImageIds.bind(this)
-  }
-
-  fischerYatesCategories() {
-    // shuffle the categories array in place in O(n) time
-    let categories = ['Road', 'Mountain', 'Town']
-    let i = 0,
-      j = 0,
-      temp = null
-
-    for (i = categories.length - 1; i > 0; i -= 1) {
-      j = Math.floor(Math.random() * (i + 1))
-      temp = categories[i]
-      categories[i] = categories[j]
-      categories[j] = temp
-    }
-
-    return categories
-  }
-
-  fischerYatesImageIds() {
-    // shuffle the categories array in place in O(n) time
-    let imageIds = [1, 2, 3, 4, 5, 6, 7]
-    let i = 0,
-      j = 0,
-      temp = null
-
-    for (i = imageIds.length - 1; i > 0; i -= 1) {
-      j = Math.floor(Math.random() * (i + 1))
-      temp = imageIds[i]
-      imageIds[i] = imageIds[j]
-      imageIds[j] = temp
-    }
-
-    return imageIds
+    this.categories = fischerYatesShuffle(['Road', 'Mountain', 'Town'])
+    this.imageIds = [1, 2, 3, 4, 5, 6, 7]
   }
 
   render() {
@@ -54,15 +22,15 @@ export default class Home extends React.Component {
       <article className="cf">
       <TopRow
         category={this.categories[0]}
-        imageIds={this.fischerYatesImageIds()}
+        imageIds={fischerYatesShuffle(this.imageIds)}
       />
       <MiddleRow
         category={this.categories[1]}
-        imageIds={this.fischerYatesImageIds()}
+        imageIds={fischerYatesShuffle(this.imageIds)}
       />
       <BottomRow
         category={this.categories[2]}
-        imageIds={this.fischerYatesImageIds()}
+        imageIds={fischerYatesShuffle(this.imageIds)}
       />
     </article>
     )
