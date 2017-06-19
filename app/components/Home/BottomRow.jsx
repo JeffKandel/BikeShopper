@@ -5,7 +5,7 @@ import CategoryLink from './CategoryLink'
 export default ({category,imageIds}) => (
   <div>
     <div className="fl w-100 w-50-m w-25-ns">
-      <ImageLink image={`/images/${category}/${imageIds[0]}.jpg`}/>
+      <CategoryLink category={category}/>
       <ImageLink image={`/images/${category}/${imageIds[1]}.jpg`}/>
     </div>
     <div className="fl w-100 w-50-m w-25-l">
@@ -24,7 +24,7 @@ export default ({category,imageIds}) => (
         </div>
       </div>
       <div className="fl w-100">
-        <CategoryLink category={category}/>
+        <ImageLink image={`/images/${category}/${imageIds[0]}.jpg`}/>
       </div>
     </div>
     <div className="fl w-100 w-50-l">

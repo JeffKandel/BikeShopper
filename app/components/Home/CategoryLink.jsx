@@ -6,7 +6,7 @@ export default ({category}) => (
     <span
       role="category"
       aria-label={category}
-      className="flex justify-center items-center bg-center bg-black cover aspect-ratio--object">
+      className="flex f3 link hover-pink white-70 justify-center items-center bg-black aspect-ratio--object">
         {category}
     </span>
   </Link>

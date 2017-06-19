@@ -9,7 +9,7 @@ export default ({ category, imageIds }) => (
     <ImageLink image={`/images/${category}/${imageIds[0]}.jpg`}/>
     </div>
     <div className="fl w-50 w-25-ns">
-      <CategoryLink />
+      <CategoryLink category={category}/>
     </div>
     <div className="fl w-100 w-25-ns">
       <ImageLink image={`/images/${category}/${imageIds[2]}.jpg`}/>
