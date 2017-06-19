@@ -6,7 +6,7 @@ export default ({image}) => (
     <span
       role="img"
       aria-label="Products"
-      style={{backgroundImage: `url(${image||`http://via.placeholder.com/700`})`}}
+      style={{backgroundImage: `url(${image})`}}
       className="bg-center cover aspect-ratio--object">
     </span>
   </Link>

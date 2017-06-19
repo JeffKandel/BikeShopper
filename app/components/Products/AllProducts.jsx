@@ -11,7 +11,8 @@ export class AllProducts extends React.Component {
   }
   render() {
     return (
-      <div className="">
+      <section class="cf w-100 pa2-ns">
+
           {
             this.props.products && this.props.products.map(product => (
               <ProductItem
@@ -25,7 +26,7 @@ export class AllProducts extends React.Component {
               />
             ))
           }
-    </div>
+    </section>
     )
   }
 }
