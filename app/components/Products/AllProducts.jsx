@@ -2,17 +2,25 @@ import React from 'react'
 import { Link } from 'react-router'
 import { login } from 'APP/app/reducers/auth'
 import { connect } from 'react-redux'
+
 import ProductItem from './ProductItem'
+import ProductCategory from './ProductCategory'
 
 export class AllProducts extends React.Component {
-
   constructor(props) {
     super(props)
   }
+
   render() {
     return (
-      <section class="cf w-100 pa2-ns">
-
+      <section className="cf w-100 pa2-ns">
+          <header className="tc pv3 pv4-ns">
+            <div className="flex flex-row justify-center">
+              <ProductCategory category='Road' />
+              <ProductCategory category='Mountain' />
+              <ProductCategory category='Town' />
+            </div>
+          </header>
           {
             this.props.products && this.props.products.map(product => (
               <ProductItem

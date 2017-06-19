@@ -2,11 +2,13 @@ import axios from 'axios'
 
 const initialState = {
   products: [],
+  selectedCategory: '',
   selectedProduct: {}
 }
 
 /* -----------------    ACTION TYPES     ------------------ */
 const SET_PRODUCTS = 'SET_PRODUCTS'
+const SET_SELECTED_CATEGORY = 'SET_CATEGORY'
 const SET_SELECTED_PRODUCT = 'SET_SELECTED_PRODUCT'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
 const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
@@ -27,6 +29,11 @@ export const setProducts = (products) => ({
 export const setProduct = (product) => ({
   type: SET_SELECTED_PRODUCT,
   selectedProduct: product
+})
+
+export const setCategory = (category) => ({
+  type: SET_SELECTED_CATEGORY,
+  selectedCategory: category
 })
 
 export const createProduct = (product) => ({
@@ -73,6 +80,10 @@ export default function(state = initialState, action) {
       newState.selectedProduct = action.selectedProduct
       break
 
+    case SET_SELECTED_CATEGORY:
+      newState.selectedCategory = action.selectedCategory
+      break
+
     case CREATE_PRODUCT:
       newState.products = newState.products.concat([action.product])
       break
@@ -111,6 +122,6 @@ export const removeProduct = id => dispatch => {
 
 export const fetchSingleProduct = id => dispatch => {
   axios.get(`/api/products/${id}`)
-    .then(res => dispatch(setProduct(res.data)) )
+    .then(res => dispatch(setProduct(res.data)))
     .catch(err => console.error(`Fetching product failed..`, err))
 }
