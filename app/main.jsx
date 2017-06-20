@@ -5,7 +5,7 @@ import axios from 'axios'
 
 // React Imports
 import React from 'react'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
 import { render } from 'react-dom'
 import { connect, Provider } from 'react-redux'
 import store from './store'
@@ -15,6 +15,9 @@ import Root from './components/Root'
 
 // Home Imports
 import Home from './components/Home/Home'
+
+// About Imports
+import About from './components/About/About'
 
 // Product Imports
 import AllProducts, { setProducts } from './components/Products/AllProducts'
@@ -65,10 +68,11 @@ render(
         <Route path="/products" component={ AllProducts } />
         <Route path="/products/:id" component={ SingleProduct } onEnter = { onProductEnter }/>
         <Route path="/cart" component={ Cart } />
+        <Route path="/about" component={ About } />
         <Route path="/authenticate" component={ Authenticate } />
         <IndexRoute component={ Home } />
       </Route>
-      <Route path='*' component={ Home } />
+      <Redirect from='*' to='/' />
     </Router>
   </Provider>,
   document.getElementById('main')

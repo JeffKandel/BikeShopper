@@ -30,14 +30,11 @@ class ImageLink extends React.Component {
             title="Cart"
             logo="shopping-cart"
           />
-          {this.props.user ?
-          <WhoAmI/> :
           <NavbarLink
-            to="/authenticate"
-            title="Login / Sign Up"
-            logo="sign-in"
+            to="/about"
+            title="About"
+            logo="info-circle"
           />
-          }
       </nav>
     )
   }
