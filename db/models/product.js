@@ -21,27 +21,8 @@ module.exports = db => db.define('products', {
       min: 0
     }
   },
-  images: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-  },
-  color: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false
-
-  },
-  size: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false
-  },
-  quantity: {
-    type: Sequelize.INTEGER,
-    validate: {
-      isInt: true,
-      min: 0
-    }
-  },
-  reviewStars: {
-    type: Sequelize.DECIMAL(2, 1)
+  image: {
+    type: Sequelize.STRING,
   },
   description: {
     type: Sequelize.TEXT,

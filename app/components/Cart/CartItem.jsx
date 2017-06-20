@@ -9,7 +9,7 @@ export default ({ item, handleRemove }) => (
   <tr>
     <td className="pv3 pr3 tc bb b--black-20">
       <img
-        src={`${item.product.images[0]}`}
+        src={`/images/Products/${item.product.image}`}
         className="pa1 ba b--black-10 h3"
         alt={`${item.product.name} avatar`}
       />

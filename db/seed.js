@@ -1,11 +1,11 @@
 'use strict'
 
 /*
-* To Seed Your Local Database
-* Check Postico... do you have a lisas-bikes database?
-* NO: npm run dev will create the database
-* YES: npm run seed
-*/
+ * To Seed Your Local Database
+ * Check Postico... do you have a lisas-bikes database?
+ * NO: npm run dev will create the database
+ * YES: npm run seed
+ */
 
 const db = require('APP/db'),
   { User, Product, Review, Order, Item, Promise } = db,
@@ -13,167 +13,146 @@ const db = require('APP/db'),
 
 function seedEverything() {
   const seeded = {
-    users: users(),
     products: products(),
   }
 
-  seeded.orders = orders(seeded)
-  seeded.items = items(seeded)
-  seeded.reviews = reviews(seeded)
 
   return Promise.props(seeded)
 }
 
-const users = seed(User, {
-  adam: {
-    first_name: 'Adam',
-    last_name: 'Kim',
-    email: 'akim0@nationalgeographic.com',
-    user_name: 'akim',
-    password: 'ZzWHy0ZHRut',
-    is_admin: false
-  },
-  kathy: {
-    first_name: 'Kathy',
-    last_name: 'Bailey',
-    email: 'kbailey1@army.mil',
-    user_name: 'kbailey',
-    password: 'aSyjEu',
-    is_admin: false
-  },
-  deborah: {
-    first_name: 'Deborah ',
-    last_name: 'Walker',
-    email: 'dwalker2@ning.com',
-    user_name: 'dwalker',
-    password: 'aJA7P3',
-    is_admin: true
-  }
-})
 
 const products = seed(Product, {
-  road: {
-    name: 'RoadMaster X-Treme',
+  road7: {
+    name: 'Miyata Road',
     category: 'Road',
-    price: 135900,
-    color: ['White', 'Red', 'Black'],
-    size: ['Large', 'Medium', 'Small'],
-    images: ['http://www.bikesdirect.com/products/gravity/images/avenue-a-xiv-org-2100.jpg', 'http://www.bikesdirect.com/products/gravity/images/avenue-a-xiv-wht-2100.jpg', 'http://www.bikesdirect.com/products/gravity/images/avenue-a-xiv-blk-2100.jpg'],
-    quantity: 7480,
-    reviewStars: 3.9,
-    description: 'SO EXTREME YOUR FACE WILL MELT! us vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in'
+    price: 139999,
+    image: `12.jpg`,
+    description: `Campagnolo Chorus equipped Miyata with hand-brazed gold lugs.  A classic frame with the most modern components available.`
   },
-  mountainLarge: {
-    name: 'Mount-Pain X-FIRE',
-    category: 'Mountain',
-    price: 210051,
-    color: ['White', 'Red', 'Pink'],
-    size: ['Large', 'Medium', 'Small'],
-    images: ['http://www.bikesdirect.com/products/gravity/images/avenue-a-xiv-org-2100.jpg', 'http://www.bikesdirect.com/products/gravity/images/avenue-a-xiv-wht-2100.jpg'],
-    quantity: 2403,
-    reviewStars: 3.9,
-    description: 'SUCH PAIN AHHH! us vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in'
+  road6: {
+    name: 'Sarthe',
+    category: 'Road',
+    price: 120000,
+    image: `10.jpg`,
+    description: `The Lemond “Sarthe” is a competitive steel road bike complete with Shimano Ultegra, Bontrager cranks, Bontrager Race wheels, FIZIK Arione saddle, Bontrager Race Lite X stem, carbon fork, Cane Creek headset, Speedplay pedals. `
   },
-  mountainMedium: {
-    name: 'Mount-Pain X-FIRE',
+  road4: {
+    name: 'R33',
+    category: 'Road',
+    price: 249999,
+    image: `8.jpg`,
+    description: `The Waterford “R33” bike is a custom steel road bike with SRAM Red with Mavic Ksyrium ES wheels, Ritchey stem, handlebar, and seatpost, FIZIK Arione saddle, Chris King headset, and Speedplay pedals.`
+  },
+  road1: {
+    name: 'Sphera',
+    category: 'Road',
+    price: 169999,
+    image: `5.jpg`,
+    description: `The Casati “Sphera” is a competitive road bike purchased from Mill Valley Cycle Works.`
+  },
+  road2: {
+    name: '5900',
+    category: 'Road',
+    price: 135999,
+    image: `6.jpg`,
+    description: `The "Trek 5900" is a competitive carbon road racing bike `
+  },
+  road3: {
+    name: 'Challenger',
+    category: 'Road',
+    price: 230000,
+    image: `7.jpg`,
+    description: `The Ciocc “Challenger” is a sleek competitive road bike with Shimano Dura Ace, Syntace Aero bars, 3T stem, Mavic Open Pro rims on Dura Ace hubs, and Terry saddle. `
+  },
+
+  road5: {
+    name: 'Sirius',
+    category: 'Road',
+    price: 230000,
+    image: `9.jpg`,
+    description: `The Somec "Sirius" is a triathlon road bike from the early 2000s. Its unique design is aimed to minimize drag whilst improving aerodynamics.`
+  },
+
+
+  road8: {
+    name: 'Allez S-Works',
+    category: 'Road',
+    price: 125000,
+    image: `13.jpg`,
+    description: `The Specialized “Allez S-Works Festina” is a competitive road bike equipped with Campagnolo Record, Mavic Ksyrium wheels, 3T handlebars, 3T Zepp stem, and LOOK pedals.`
+  },
+  road9: {
+    name: 'Blade',
+    category: 'Road',
+    price: 159999,
+    image: `15.jpg`,
+    description: `The Litespeed “Blade” is a competitive titanium road racing bike equipped with Campagnolo Record, Campagnolo Shamal wheels, Reynolds carbon fork, LOOK pedals, Deda bar and stem,  and Selle Italia "Trans Am" saddle.`
+  },
+  Mountain4: {
+    name: `Downhill X-Treme`,
     category: 'Mountain',
-    price: 210052,
-    color: ['Red', 'Blue'],
-    size: ['Large', 'Medium', 'Small'],
-    images: ['http://www.bikesdirect.com/products/gravity/images/avenue-a-xiv-blk-2100.jpg'],
-    quantity: 2403,
-    reviewStars: 3.2,
-    description: 'SUCH PAIN AHHH! MEDIUM IS ON THE SMALL SIDE OF THINGS! us vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in'
-  }
+    price: 55000,
+    image: `29.jpg`,
+    description: `Guaranteed to make your face melt!  The Downhill X-Treme is X to the Treme!!! May not work to well though...`
+  },
+  mountain1: {
+    name: 'Proflex 5500',
+    category: 'Mountain',
+    price: 75000,
+    image: '2.jpg',
+    description: `The K2 “ProFlex 5500” is a carbon fiber, full suspension mountain bike with variable electronic suspension damping.`
+  },
+  mountain2: {
+    name: 'VPP',
+    category: 'Mountain',
+    price: 125000,
+    image: `3.jpg`,
+    description: `The Outland “VPP” is a rare, full suspension mountain bike. The groundbreaking VPP suspension design makes it a genuine piece of mountain biking history.`
+  },
+  mountain3: {
+    name: 'Element T.O.',
+    category: 'Mountain',
+    price: 140000,
+    image: `4.jpg`,
+    description: `The Rocky Mountain “Element T.O.” is a full suspension cross country mountain bike, finished with legendary bike shop “Sausalito Cyclery” Canadian emblems.`
+  },
+  town2: {
+    name: 'Country Road Bob',
+    category: 'Town',
+    price: 89999,
+    image: `11.jpg`,
+    description: `The Van Dessel “Country Road Bob” is a single speed cyclocross bike with a fun green finish and yellow grip.`
+  },
+  town3: {
+    name: 'Java Town',
+    category: 'Town',
+    price: 89999,
+    image: `14.jpg`,
+    description: `The Sycip “Java Town” is a custom, single speed cafe-racer style city bike equipped with MICHE Primato crankset, 3T bars, Brooks leather B72 saddle, Sun Ringle CR18 wheels, Wellgo flat pedals, Dynamic 13 stem, XTR brake calipers, and Dia-Compe brake levers. `
+  },
+  town5: {
+    name: `Guv'nor`,
+    category: 'Town',
+    price: 110000,
+    image: `25.jpg`,
+    description: `Pashley’s elegant “Guv’nor” is a cafe racer, vintage style city bike.  The bike is equipped Sturmey Archer hubs (with drum brake), Brooks Champion Special B17 leather saddle with titanium rails, Brooks leather grips, MKS pedals with Power Grip straps. `
+  },
+  town4: {
+    name: 'Chopper Hog Roadster',
+    category: 'Town',
+    price: 100000,
+    image: `22.jpg`,
+    description: `Schwinn “Chopper Hog Roadster” is a single speed chopper with 20 inch wheels.`
+  },
+  town1: {
+    name: 'Classic Tourer',
+    category: 'Town',
+    price: 39999,
+    image: '1.jpg',
+    description: `This is an elegant vintage Dutch style bike with an integrated bike stand and Brooks leather saddle.`
+  },
 })
 
-const orders = seed(Order,
-  ({ users }) => ({
-    orderOne: {
-      status: 'Pending',
-      user_id: users.adam.id
-    },
-    orderTwo: {
-      status: 'Pending',
-      user_id: users.kathy.id
-    },
-    orderThree: {
-      status: 'Pending',
-      user_id: users.deborah.id
-    },
-    orderFour: {
-      status: 'Complete',
-      user_id: users.kathy.id
-    },
-  })
-)
-
-const items = seed(Item,
-  ({ orders, products }) => ({
-    'orderOne has two Medium Mountain Bikes': {
-      price: 210051,
-      quantity: 2,
-      order_id: orders.orderOne.id,
-      product_id: products.mountainMedium.id
-    },
-    'orderTwo has one discounted Medium Mountain Bikes': {
-      price: 160051,
-      quantity: 1,
-      order_id: orders.orderTwo.id,
-      product_id: products.mountainMedium.id
-    },
-    'orderThree has one Road Bike': {
-      price: 210052,
-      quantity: 1,
-      order_id: orders.orderThree.id,
-      product_id: products.road.id
-    },
-    'orderThree has one Large Mountain Bike ': {
-      price: 210053,
-      quantity: 1,
-      order_id: orders.orderThree.id,
-      product_id: products.mountainLarge.id
-    },
-    'orderFour has three discounted Large Mountain Bike ': {
-      price: 150004,
-      quantity: 3,
-      order_id: orders.orderFour.id,
-      product_id: products.mountainLarge.id
-    },
-    'orderFour has two Medium Mountain Bike ': {
-      price: 210058,
-      quantity: 2,
-      order_id: orders.orderFour.id,
-      product_id: products.mountainMedium.id
-    },
-  })
-)
-
-const reviews = seed(Review,
-  ({ users, products }) => ({
-    'dope bikez': {
-      title: 'Dope Bikez',
-      content: 'This bike is so dope, it is a firecracker under my keister (sp?)',
-      num_stars: 5,
-      user_id: users.adam.id,
-      product_id: products.mountainMedium.id
-    },
-    'this bike is trash': {
-      title: 'Too Expensive!',
-      content: 'I cannot believe how expensive this is. It barely goes 15 mph.  No motor. Bad.',
-      num_stars: 1,
-      user_id: users.deborah.id,
-      product_id: products.road.id
-    },
-    'my kids love it': {
-      title: 'gud starter bik',
-      content: 'my childern lov there chrismat prasnt. thanks',
-      num_stars: 2,
-      user_id: users.kathy.id,
-      product_id: products.road.id
-    },
-  })
-)
 
 if (module === require.main) {
   db.didSync
@@ -245,4 +224,4 @@ function seed(Model, rows) {
   }
 }
 
-module.exports = Object.assign(seed, { users, orders, items,products,reviews })
+module.exports = Object.assign(seed, { products })

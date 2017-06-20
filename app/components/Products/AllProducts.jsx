@@ -35,7 +35,7 @@ export class AllProducts extends React.Component {
                 productId={product.id}
                 name={product.name}
                 price={product.price}
-                image={product.images[0]}
+                image={`/images/Products/${product.image}`}
                 description={`${product.description.slice(0,100).trim()}...`}
                 alt={product.name}
               />

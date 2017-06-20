@@ -49,9 +49,9 @@ class SingleProduct extends React.Component {
           </div>
         </header>
         <div className="fl w-two-thirds-ns pa2">
-            { this.props.product.images &&
+            { this.props.product.image &&
               <img
-                src={this.props.product.images[0]}
+                src={`/images/Products/${this.props.product.image}`}
                 alt={this.props.product.name}
               />}
         </div>
