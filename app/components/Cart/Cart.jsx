@@ -9,9 +9,9 @@ import TableElement from './TableElement'
 /* -----------------    COMPONENT     ------------------ */
 
 export class Cart extends React.Component {
-
   constructor(props) {
     super(props)
+    this.makeCartItem = this.makeCartItem.bind(this)
   }
 
   calculateTotal() {
@@ -19,9 +19,14 @@ export class Cart extends React.Component {
       this.props.currentOrder.items.reduce((total, item) => (total + item.price * item.quantity), 0) / 100
   }
 
+  makeCartItem(item) {
+    return <CartItem key={item.id} item={item} handleRemove={ this.props.handleRemove } />
+  }
+
   render() {
     return (
       <div className="pa4">
+      {this.props.currentOrder.id}
         <div className="overflow-auto">
           <table className="f6 w-100 w90-m w-80-l mw8 center" cellSpacing="0">
             <thead>
@@ -33,9 +38,8 @@ export class Cart extends React.Component {
               </tr>
             </thead>
             <tbody className="lh-copy">
-              {this.props.currentOrder.items
-                && this.props.currentOrder.items
-                   .map((item) =>(<CartItem key={item.id} item={item} handleRemove={ this.props.handleRemove } />))}
+              {this.props.currentOrder.items &&
+               this.props.currentOrder.items.map(this.makeCartItem)}
             </tbody>
           </table>
         </div>
@@ -54,5 +58,3 @@ const mapDispatch = (dispatch) => ({ handleRemove: (itemId) => {
 }})
 
 export default connect(mapProps, mapDispatch)(Cart)
-
-
