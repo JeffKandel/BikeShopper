@@ -25,7 +25,6 @@ module.exports = require('express').Router()
     .catch(next))
   .get('/new',
     (req, res, next) => {
-        console.log("req", req.session);
       Order.findOrCreate({ where: { id: req.session.orderId } })
         .spread((order, created) => {
           req.session.orderId = order.id
