@@ -10,7 +10,8 @@ module.exports = db => db.define('items', {
     validate: {
       min: 0
     }
-  }, {
+  }
+}, {
   defaultScope: {
     include: [{
       model: db.model('products'),
