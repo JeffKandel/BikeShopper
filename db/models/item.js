@@ -10,16 +10,7 @@ module.exports = db => db.define('items', {
     validate: {
       min: 0
     }
-  },
-  quantity: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    validate: {
-      min: 0,
-      isInt: true
-    }
-  }
-}, {
+  }, {
   defaultScope: {
     include: [{
       model: db.model('products'),

@@ -16,7 +16,7 @@ export class Cart extends React.Component {
 
   calculateTotal() {
     return this.props.currentOrder.items &&
-      this.props.currentOrder.items.reduce((total, item) => (total + item.price * item.quantity), 0) / 100
+      this.props.currentOrder.items.reduce((total, item) => (total + item.price), 0) / 100
   }
 
   makeCartItem(item) {
