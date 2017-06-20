@@ -23,11 +23,6 @@ export const setPastOrders = (orders) => ({
   pastOrders: orders
 })
 
-export const updateOrder = (order) => ({
-  type: UPDATE_ORDER,
-  order: order
-})
-
 export const deleteItemFromOrder = (itemId) => ({
   type: DELETE_ITEM_FROM_ORDER,
   itemId
@@ -42,9 +37,6 @@ export default function(state = initialState, action) {
       break
     case SET_PAST_ORDERS:
       newState.pastOrders = action.pastOrders
-      break
-    case UPDATE_ORDER:
-      newState.currentOrder = action.order
       break
     case DELETE_ITEM_FROM_ORDER:
       newState.currentOrder = _removeItemFromOrder(action.itemId, state.currentOrder)
@@ -69,9 +61,9 @@ export const fetchSessionOrder = () => dispatch => {
     .catch(err => console.error(`Fetching new order unsuccesful`, err))
 }
 
-export const updateCurrentOrder = (id, order) => dispatch => {
-  return axios.put(`/api/orders/${id}`, order)
-    .then(res => dispatch(updateOrder(res.data)))
+export const addItemToOrder = (id, item) => dispatch => {
+  return axios.put(`/api/orders/${id}`, item)
+    .then(res => dispatch(setCurrentOrder(res.data)))
     .catch(err => console.error(`Updating order #${id} unsuccessful`, err))
 }
 

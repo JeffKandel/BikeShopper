@@ -6,7 +6,7 @@ import { formatPrice } from '../../utils/priceUtils'
 import store from 'App/app/store'
 import { connect } from 'react-redux'
 
-import { updateCurrentOrder } from '../../reducers/order'
+import { addItemToOrder } from '../../reducers/order'
 
 // *------------------- COMPONENT -----------------*//
 
@@ -14,15 +14,15 @@ class SingleProduct extends React.Component {
 
   constructor(props) {
     super(props)
-    this.order = {
-      product_id: this.props.product.id,
-      quantity: 1,
-      price: this.props.product.id,
-      order_id: this.props.selectedOrder.id
-    }
   }
 
   render() {
+    const item = {
+      product_id: this.props.product.id,
+      quantity: 1,
+      price: this.props.product.price,
+      order_id: this.props.selectedOrder.id
+    }
 
     return (
       <article className="flex cf ph3 ph5-ns pv5">
@@ -40,7 +40,7 @@ class SingleProduct extends React.Component {
             <div
               href='#'
               className="fr pointer no-underline near-white bg-animate bg-mid-gray hover-bg-black inline-flex items-center ma2 tc br2 pa2"
-              onClick={()=>this.props.updateCurrentOrder(this.props.selectedOrder.id, this.order)}
+              onClick={()=>this.props.addItemToOrder(this.props.selectedOrder.id, item)}
             >
               <FontAwesome name='shopping-cart'/>
               <span className="f6 ml2 pr2">
@@ -64,4 +64,4 @@ class SingleProduct extends React.Component {
 /* ------------------- CONTAINER ----------------- */
 
 export default connect(
-  state => ({ selectedOrder: state.order.currentOrder, product: state.product.selectedProduct }), { updateCurrentOrder })(SingleProduct)
+  state => ({ selectedOrder: state.order.currentOrder, product: state.product.selectedProduct }), { addItemToOrder })(SingleProduct)
