@@ -116,6 +116,13 @@ const products = seed(Product, {
     image: `4.jpg`,
     description: `The Rocky Mountain “Element T.O.” is a full suspension cross country mountain bike, finished with legendary bike shop “Sausalito Cyclery” Canadian emblems.`
   },
+  mountain5: {
+    name: 'X-Country Elite',
+    category: 'Mountain',
+    price: 99999,
+    image: `28.jpg`,
+    description: `A cross country bike ready for anything you want to throw it's way.  Professional spec and an excellent frame will make this your dream bike for all sorts of single track.`
+  },
   town2: {
     name: 'Country Road Bob',
     category: 'Town',
