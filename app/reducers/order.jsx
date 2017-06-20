@@ -61,10 +61,10 @@ export const fetchSessionOrder = () => dispatch => {
     .catch(err => console.error(`Fetching new order unsuccesful`, err))
 }
 
-export const addItemToOrder = (id, item) => dispatch => {
-  return axios.put(`/api/orders/${id}`, item)
+export const addItemToOrder = (item) => dispatch => {
+  return axios.post(`/api/items/`, item)
     .then(res => dispatch(setCurrentOrder(res.data)))
-    .catch(err => console.error(`Updating order #${id} unsuccessful`, err))
+    .catch(err => console.error(`Updating order #${item.order_id} unsuccessful`, err))
 }
 
 export const mergeCurrentOrder = (databaseOrder, sessionOrder) => dispatch => {

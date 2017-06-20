@@ -39,7 +39,7 @@ class SingleProduct extends React.Component {
             <div
               href='#'
               className="fr pointer no-underline near-white bg-animate bg-mid-gray hover-bg-black inline-flex items-center ma2 tc br2 pa2"
-              onClick={() => this.props.addItemToOrder(this.props.selectedOrder.id, item)}
+              onClick={() => this.props.addItemToOrder(item)}
             >
               <FontAwesome name='shopping-cart'/>
               <span className="f6 ml2 pr2">
