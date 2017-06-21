@@ -3,8 +3,6 @@ import { Link } from 'react-router'
 
 import ReferenceLink from './ReferenceLink'
 
-import { CSSTransitionGroup } from 'react-transition-group' // ES6
-
 export default () => (
   <div className="db dtc-ns v-mid tl w-50">
     <Link to="/" className="dib f5 f4-ns fw6 mt0 mb1 link black-70">

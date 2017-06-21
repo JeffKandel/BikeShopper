@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({id, href,name,delay}) => (
+export default ({ id, href, name, delay }) => (
   <a
     className="black-70 no-underline"
     href={href}
@@ -9,4 +9,3 @@ export default ({id, href,name,delay}) => (
     {name}
   </a>
 )
-
