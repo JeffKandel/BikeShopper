@@ -64,7 +64,6 @@ const products = seed(Product, {
     image: `7.jpg`,
     description: `The Ciocc “Challenger” is a sleek competitive road bike with Shimano Dura Ace, Syntace Aero bars, 3T stem, Mavic Open Pro rims on Dura Ace hubs, and Terry saddle. `
   },
-
   road5: {
     name: 'Sirius',
     category: 'Road',
@@ -72,8 +71,6 @@ const products = seed(Product, {
     image: `9.jpg`,
     description: `The Somec "Sirius" is a triathlon road bike from the early 2000s. Its unique design is aimed to minimize drag whilst improving aerodynamics.`
   },
-
-
   road8: {
     name: 'Allez S-Works',
     category: 'Road',

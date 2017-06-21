@@ -8,7 +8,7 @@ export default ({ productId, name, price, image, description, alt }) => (
     <article className="fl w-100 w-50-m  w-third-ns pa2-ns">
       <div className="aspect-ratio aspect-ratio--8x5 dim">
         <img style={{backgroundImage: `url(${image})`}}
-        className="db bg-center cover aspect-ratio--object" />
+        className="db bg-center contain aspect-ratio--object" />
       </div>
       <div href="#0" className="ph2 ph0-ns pb3 link db">
         <h3 className="f5 f4-ns mb0 black-90">{name}</h3>
