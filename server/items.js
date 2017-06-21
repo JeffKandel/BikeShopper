@@ -15,7 +15,7 @@ module.exports = require('express').Router()
     (req, res, next) =>
     Item.create(req.body)
     .then(() => {
-      Order.findById(req.body.order_id)
+      return Order.findById(req.body.order_id)
     })
     .then(order => res.status(201).json(order))
     .catch(next))

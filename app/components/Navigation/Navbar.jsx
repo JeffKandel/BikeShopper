@@ -18,7 +18,7 @@ class ImageLink extends React.Component {
 
   render() {
     return (
-      <nav className="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
+      <nav className="db dtc-l v-mid w-100 tc tr-l mt2 mt0-ns">
           <NavbarLink
             to="/products"
             title="Bicycles"

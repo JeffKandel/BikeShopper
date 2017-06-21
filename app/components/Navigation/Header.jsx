@@ -15,7 +15,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className="w-100 pa3 ph5-ns top-0 bg-white">
-        <div className="db dt-ns mw9 center w-100">
+        <div className="db dt-l mw9 center w-100">
         <SiteName />
         <Navbar user={this.props.user}/>
         </div>
