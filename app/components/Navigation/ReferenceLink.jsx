@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default ({href,name,animation}) => (
+export default ({id, href,name,delay}) => (
   <a
     className="black-70 no-underline"
     href={href}
-    style={animation}
     target="_blank"
   >
     {name}
