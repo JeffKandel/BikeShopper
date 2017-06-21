@@ -1,11 +1,13 @@
 import React from 'react'
 
-export default () => (
+export default ({href,name,animation}) => (
   <a
     className="black-70 no-underline"
-    href="http://www.tachyons.io"
+    href={href}
+    style={animation}
     target="_blank"
   >
-    tachyons.io
+    {name}
   </a>
 )
+

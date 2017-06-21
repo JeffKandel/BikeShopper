@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import TachyonsLink from './TachyonsLink'
+import ReferenceLink from './ReferenceLink'
+
 
 
 export default () => (
@@ -11,8 +13,10 @@ export default () => (
     </Link>
     <div className="dib">
       <small className="nowrap f6 mt2 mt3-ns pr2 black-70 fw2">
-         styled with <TachyonsLink />
+         styled by <ReferenceLink name='Jeff Kandel' href='http://www.github.com/JeffKandel'/> <ReferenceLink name='tachyons.io' href='http://www.tachyons.io'/>
       </small>
     </div>
   </div>
 )
+
+
