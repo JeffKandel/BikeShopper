@@ -24,8 +24,8 @@ class SingleProduct extends React.Component {
     }
 
     return (
-      <article className="flex cf ph3 ph5-ns pv5">
-        <header className=" fn fl-ns w-third-ns pr4-ns">
+      <article className="flex flex-column flex-row-ns cf ph3 ph5-ns pv5">
+        <header className="fn order-1 order-0-ns fl-ns w-third-ns pr4-ns">
           <h1 className="f2 lh-title fw9 mb3 mt0 pt3 bt bw2">
             {this.props.product.name}
           </h1>
