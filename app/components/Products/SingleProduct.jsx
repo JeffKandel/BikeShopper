@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import CartButton from './CartButton'
+import SingleProductButton from './SingleProductButton'
 
 import { formatPrice } from '../../utils/priceUtils'
 
@@ -39,18 +39,18 @@ class SingleProduct extends React.Component {
           <h2 className="f5 mid-gray lh-title">
             {product.description}
           </h2>
-          <div className="flex items-center justify-between col-md-6">
+          <div className="flex flex-column flex-row-l items-center justify-between col-md-6">
             <price className="f6 ttu tracked overflow-scroll gray">
               {formatPrice(product.price)}
             </price>
             {(orderItems &&
               orderItems.filter(i => i.product_id === product.id).length)
-              ?<CartButton
+              ?<SingleProductButton
               iconName='remove'
               handleClick={this.deleteItemFromDatabase.bind(this, item.product_id)}
               text='Remove'
               />
-              :<CartButton
+              :<SingleProductButton
               iconName='shopping-cart'
               handleClick={this.addItemToOrder.bind(this, item)}
               text='Add to Cart'
