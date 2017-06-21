@@ -35,7 +35,7 @@ module.exports = require('express').Router()
   .delete('/:id',
     // TO DO: make sure that this user is Admin
     (req, res, next) =>
-    Item.findById(req.params.id)
+    Item.findOne({ where: { product_id: req.params.id } })
     .then(item => item.destroy())
     .then(wasDestroyedBool => {
       if (wasDestroyedBool) {

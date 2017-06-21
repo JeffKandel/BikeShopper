@@ -1,12 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router'
 
-import FontAwesome from 'react-fontawesome'
+import CartButton from './CartButton'
+
 import { formatPrice } from '../../utils/priceUtils'
 
 import store from 'App/app/store'
 import { connect } from 'react-redux'
 
-import { addItemToOrder } from '../../reducers/order'
+import { addItemToOrder, deleteItemFromDatabase } from '../../reducers/order'
 
 // *------------------- COMPONENT -----------------*//
 
@@ -14,6 +16,8 @@ class SingleProduct extends React.Component {
 
   constructor(props) {
     super(props)
+    this.addItemToOrder = this.props.addItemToOrder.bind(this)
+    this.deleteItemFromDatabase = this.props.deleteItemFromDatabase.bind(this)
   }
 
   render() {
@@ -23,37 +27,45 @@ class SingleProduct extends React.Component {
       product_id: this.props.product.id
     }
 
+    const orderItems = this.props.selectedOrder.items,
+          product = this.props.product
+
     return (
       <article className="flex flex-column flex-row-ns cf ph3 ph5-ns pv5">
         <header className="fn order-1 order-0-ns fl-ns w-third-ns pr4-ns">
           <h1 className="f2 lh-title fw9 mb3 mt0 pt3 bt bw2">
-            {this.props.product.name}
+            {product.name}
           </h1>
           <h2 className="f5 mid-gray lh-title">
-            {this.props.product.description}
+            {product.description}
           </h2>
           <div className="flex items-center justify-between col-md-6">
             <price className="f6 ttu tracked overflow-scroll gray">
-              {formatPrice(this.props.product.price)}
+              {formatPrice(product.price)}
             </price>
-            <div
-              href='#'
-              className="fr pointer no-underline near-white bg-animate bg-mid-gray hover-bg-black inline-flex items-center ma2 tc br2 pa2"
-              onClick={() => this.props.addItemToOrder(item)}
-            >
-              <FontAwesome name='shopping-cart'/>
-              <span className="f6 ml2 pr2">
-                Add to Cart
-              </span>
-            </div>
+            {(orderItems &&
+              orderItems.filter(i => i.product_id === product.id).length)
+              ?<CartButton
+              iconName='remove'
+              handleClick={this.deleteItemFromDatabase.bind(this, item.product_id)}
+              text='Remove'
+              />
+              :<CartButton
+              iconName='shopping-cart'
+              handleClick={this.addItemToOrder.bind(this, item)}
+              text='Add to Cart'
+              />
+            }
+
           </div>
         </header>
         <div className="fl w-two-thirds-ns pa2">
-            { this.props.product.image &&
-              <img
-                src={`/images/Products/${this.props.product.image}`}
-                alt={this.props.product.name}
-              />}
+          { product.image &&
+            <img
+              src={`/images/Products/${product.image}`}
+              alt={product.name}
+            />
+          }
         </div>
       </article>
     )
@@ -63,4 +75,4 @@ class SingleProduct extends React.Component {
 /* ------------------- CONTAINER ----------------- */
 
 export default connect(
-  state => ({ selectedOrder: state.order.currentOrder, product: state.product.selectedProduct }), { addItemToOrder })(SingleProduct)
+  state => ({ selectedOrder: state.order.currentOrder, product: state.product.selectedProduct }), { addItemToOrder, deleteItemFromDatabase })(SingleProduct)

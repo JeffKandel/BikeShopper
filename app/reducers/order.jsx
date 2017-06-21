@@ -23,9 +23,9 @@ export const setPastOrders = (orders) => ({
   pastOrders: orders
 })
 
-export const deleteItemFromOrder = (itemId) => ({
+export const deleteItemFromOrder = (productId) => ({
   type: DELETE_ITEM_FROM_ORDER,
-  itemId
+  productId
 })
 
 /* ------------       REDUCERS     ------------------ */
@@ -39,7 +39,7 @@ export default function(state = initialState, action) {
       newState.pastOrders = action.pastOrders
       break
     case DELETE_ITEM_FROM_ORDER:
-      newState.currentOrder = _removeItemFromOrder(action.itemId, state.currentOrder)
+      newState.currentOrder = _removeItemFromOrder(action.productId, state.currentOrder)
       break
     default:
       return state
@@ -71,10 +71,10 @@ export const mergeCurrentOrder = (databaseOrder, sessionOrder) => dispatch => {
   dispatch(setCurrentOrder(_naiveMergeOrders(databaseOrder, sessionOrder)))
 }
 
-export const deleteItemFromDatabase = (itemId) => dispatch => {
-  return axios.delete(`/api/items/${itemId}`)
+export const deleteItemFromDatabase = (productId) => dispatch => {
+  return axios.delete(`/api/items/${productId}`)
     .then(res => {
-      dispatch(deleteItemFromOrder(itemId))
+      dispatch(deleteItemFromOrder(productId))
     })
     .catch(err => console.error(`deleting item id #${itemId} unsuccessful`, err))
 }
@@ -92,9 +92,9 @@ export const _naiveMergeOrders = (databaseOrder = [], sessionOrder) => {
   return Object.assign({}, databaseOrder, { items: mergedItems })
 }
 
-const _removeItemFromOrder = (itemId, order) => {
+const _removeItemFromOrder = (productId, order) => {
   const filteredItems = order.items.filter(item => {
-    return item.id !== itemId
+    return item.product_id !== productId
   })
 
   return Object.assign({}, order, {items: filteredItems})
