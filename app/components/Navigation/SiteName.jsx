@@ -1,10 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import TachyonsLink from './TachyonsLink'
 import ReferenceLink from './ReferenceLink'
-
-
 
 export default () => (
   <div className="db dtc-ns v-mid tl w-50">
