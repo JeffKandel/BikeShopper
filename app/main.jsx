@@ -22,7 +22,7 @@ import About from './components/About/About'
 // Product Imports
 import AllProducts, { setProducts } from './components/Products/AllProducts'
 import SingleProduct from './components/Products/SingleProduct'
-import { fetchProducts, fetchSingleProduct } from './reducers/product'
+import { fetchProducts, setProduct } from './reducers/product'
 
 // Cart Imports
 import Cart from './components/Cart/Cart'
@@ -50,10 +50,14 @@ const fetchInitialData = (nextRouterState) => {
       }
     })
 }
-
 const onProductEnter = (nextRouterState) => {
   const productId = nextRouterState.params.id
-  store.dispatch(fetchSingleProduct(productId))
+  if (!store.getState().product.products.length) {
+    store.dispatch(fetchProducts()).then(products =>
+      store.dispatch(setProduct(productId)))
+  } else {
+    store.dispatch(setProduct(productId))
+  }
 }
 
 const fetchAllProducts = () => {

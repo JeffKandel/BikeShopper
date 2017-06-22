@@ -26,9 +26,9 @@ export const setProducts = (products) => ({
   products: products
 })
 
-export const setProduct = (product) => ({
+export const setProduct = (productId) => ({
   type: SET_SELECTED_PRODUCT,
-  selectedProduct: product
+  productId: productId
 })
 
 export const setCategory = (category) => ({
@@ -77,7 +77,8 @@ export default function(state = initialState, action) {
       break
 
     case SET_SELECTED_PRODUCT:
-      newState.selectedProduct = action.selectedProduct
+
+      newState.selectedProduct = newState.products.find(p => (p.id === action.productId*1)) || {}
       break
 
     case SET_SELECTED_CATEGORY:
@@ -110,8 +111,9 @@ export default function(state = initialState, action) {
 /* ------------       DISPATCHERS     ------------------ */
 
 export const fetchProducts = () => dispatch => {
-  axios.get('/api/products')
+  return axios.get('/api/products')
     .then(res => dispatch(setProducts(res.data)))
+    .catch(err => console.error(`Fetching products:  unsuccesful`, err))
 }
 
 export const removeProduct = id => dispatch => {
