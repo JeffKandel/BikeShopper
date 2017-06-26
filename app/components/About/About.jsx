@@ -19,8 +19,12 @@ export default () => (
          <p className="lh-copy measure">
             Paragraph about Tachyons and React:
               - mature inline styles
-                - Applying atomic classes was a great refresher of CSS fundamentals
-              - React components were easy to edit and maintain
+                - Applying atomic classes was a solid refresher of CSS fundamentals
+              - styling with tachyons for mobile first ended up leading to a very clear and minimal web design overall.
+              - embeding atomic CSS into React made it super easy to maintain style
+              - When did scaling disappear as a concern?  I didn't even notice.
+            Would I do it again:
+              - Yes, I'll be working on my personal site next and plan to use Tachyons.  If I were working on a larger project, I might also build a style guide to help other developers, but I would do this for any group project I was maintaining.
          </p>
          <p className="lh-copy measure">
            Links and things:
