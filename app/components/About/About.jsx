@@ -20,7 +20,7 @@ export default () => (
   </header>
   <div className="fn fl-ns w-50-ns">
     <p className="lh-copy measure mt4 mt0-ns">
-    Bike Shopper is not a store and it was never intended to be one.  It is a design experiment with some meat on its bones.  I had been reading a lot about functional CSS and given <a className=" gray link no-underline" target="_blank" href='https://www.youtube.com/watch?v=SVLUh0rn6_4'>a brief talk</a> on the subject.  After experimenting with this design approach, I was looking for a larger sandbox to explore functional CSS alongside React.  I decided to strip the CSS from an old school project and started from scratch with Tachyons CSS library.  The site you see is a result of that experimentation.
+    Bike Shopper is not a store and was never intended to be one.  It is a design project with some meat on its bones.  After reading a lot about functional CSS, I was looking for a larger sandbox to explore functional CSS alongside React.  I decided to strip the CSS from an old  project and start from scratch with the Tachyons functional CSS library.  The site you see is a result of this experimentation.
     </p>
     <p className="lh-copy measure">
     After working with Tachyons and React, I feel really positive about the combination.  Functional CSS feels close to the styling metal and the practice of writing out each class reinforced CSS fundamentals along the way.  Embedding these styles in React components ensured that maintanence and consistency were non-issues.  I plan to keep experimenting with Tachyons, next on my personal site and possible with a React Native project I have on the side.
